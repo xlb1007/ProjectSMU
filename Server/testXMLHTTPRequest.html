@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Hello world</h2>
+
+<button type="button" onclick="loadXMLDoc()">Click!</button>
+
+<p id="demo"></p>
+
+<script>
+function loadXMLDoc() {
+  var xmlhttp;
+  if (window.XMLHttpRequest) {
+    xmlhttp = new XMLHttpRequest();
+  } else {
+    // code for older browsers
+    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+  }
+  xmlhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      var responseJSON = JSON.parse(this.responseText);
+      document.getElementById("demo").innerHTML =
+      responseJSON.content;
+    }
+  };
+  xmlhttp.open("GET", "http://localhost:8080/greeting?name=user", true);
+  xmlhttp.send();
+}
+</script>
+
+</body>
+</html>
