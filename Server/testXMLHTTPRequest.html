@@ -24,7 +24,8 @@ function loadXMLDoc() {
       responseJSON.content;
     }
   };
-  xmlhttp.open("GET", "http://localhost:8080/greeting?name=user", true);
+  // we can use either a url or ip address
+  xmlhttp.open("GET", "http://10.0.0.8:8080/greeting?name=user", true);
   xmlhttp.send();
 }
 </script>
